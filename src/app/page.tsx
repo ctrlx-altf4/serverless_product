@@ -28,7 +28,7 @@ export default function Home() {
     setIsLoading(true);
     setStatus("LOADING");
     try {
-      const _data = await axios.get<IProductDataType[]>("/items");
+      const _data = await axios.get<IProductDataType[]>("/product");
       setStatus("SUCCESS");
       setData(_data.data);
     } catch (err) {
