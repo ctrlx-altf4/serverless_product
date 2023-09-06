@@ -6,6 +6,7 @@ export const getHumanizedFileSize = (byte: number) => {
     if (Number.isInteger(_n)) return _n;
     return _n.toFixed(1);
   };
+
   if (byte < 1000 * 1000) return `${getFixedNumber(byte, 1000)}KB`;
   if (byte < 1000 * 1000 * 1000)
     return `${getFixedNumber(byte, 1000 * 1000)}MB`;

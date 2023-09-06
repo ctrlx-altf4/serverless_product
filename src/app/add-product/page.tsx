@@ -13,7 +13,7 @@ import Loader from "@/components/Loader";
 
 import axios from "@/lib/axios";
 
-type FieldNames = "description" | "price" | "title";
+type FieldNames = "description" | "price" | "title" | "imageKey";
 export default function Home() {
   const [description, setDescription] = useState("");
 
@@ -179,10 +179,22 @@ export default function Home() {
           </div>
           <div>
             <label>Image</label>
+            {/*TODO: Delete Image Feature Not Implemented*/}
             <FileUpload
               onUploadSuccess={() => setIsFileUploaded(true)}
               onUploadFailed={() => setIsFileUploaded(false)}
+              onChange={(e) => {
+                if (error.has("imageKey")) {
+                  checkValidity(e);
+                }
+              }}
+              onInvalid={(err) => {
+                checkValidity(err);
+              }}
             />
+            <span className="text-xs text-red-400">
+              {error.get("imageKey")}
+            </span>
           </div>
         </div>
 

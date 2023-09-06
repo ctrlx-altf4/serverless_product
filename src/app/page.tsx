@@ -24,6 +24,7 @@ export default function Home() {
 
   const [status, setStatus] = useState("IDLE");
 
+  // would prefer to use tanstack query in real world projects.
   const fetchData = useCallback(async () => {
     setIsLoading(true);
     setStatus("LOADING");
@@ -61,12 +62,13 @@ export default function Home() {
         </div>
       </div>
       <div
-        style={{
-          display: "grid",
-          gridGap: "16px",
-          rowGap: 16,
-          gridTemplateColumns: "repeat(auto-fit, minmax(400px, auto))",
-        }}
+        className="grid gap-4  grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 "
+        // style={{
+        //   display: "grid",
+        //   gridGap: "16px",
+        //   rowGap: 16,
+        //   gridTemplateColumns: "repeat(auto-fit, minmax(400px, auto))",
+        // }}
       >
         {isLoading && (
           <>

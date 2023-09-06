@@ -35,7 +35,10 @@ function ProgressIndicator(props: IProgressProps) {
                   strokeWidth={3}
                 />
               ) : (
-                <button className="flex px-4 py-2 bg-white rounded-lg text-xs items-center justify-center text-black">
+                <button
+                  onClick={() => alert("NOT IMPLEMENTED")}
+                  className="flex px-4 py-2 bg-white rounded-lg text-xs items-center justify-center text-black"
+                >
                   {hasFailed ? "Re Upload" : "Cancel"}
                 </button>
               )}

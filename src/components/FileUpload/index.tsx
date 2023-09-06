@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import Image from "next/image";
 import ProgressIndicator from "@/components/FileUpload/ProgressIndicator";
 import useFileUploader from "@/components/FileUpload/useFileUploader";
 import FileRejectionModal from "@/components/FileUpload/FileRejectionModal";
+import * as React from "react";
 
 const getImageUrl = (image: string | File) => {
   return typeof image == "string" ? image : URL.createObjectURL(image);
@@ -27,11 +28,16 @@ function isFileRejected(file: File): FileRejectionType | false {
 
 //TODO: maybe return key on success
 //TODO: maybe return reason on failure
-interface IFileUpload {
+interface IFileUpload extends React.InputHTMLAttributes<HTMLInputElement> {
   onUploadSuccess: () => void;
   onUploadFailed: () => void;
 }
-function FileUpload({ onUploadSuccess, onUploadFailed }: IFileUpload) {
+function FileUpload({
+  onUploadSuccess,
+  onUploadFailed,
+  onInvalid,
+  onChange,
+}: IFileUpload) {
   const { file, upload, progress, isFailed } = useFileUploader({
     onSuccess: () => {
       onUploadSuccess();
@@ -97,9 +103,15 @@ function FileUpload({ onUploadSuccess, onUploadFailed }: IFileUpload) {
         <input
           className="opacity-0 absolute w-0 h-0"
           id="image"
+          required
+          name="imageKey"
           type="file"
+          onInvalid={(e) => {
+            onInvalid && onInvalid(e);
+          }}
           accept={acceptedFiles.join(",")}
           onChange={async (f) => {
+            onChange && onChange(f);
             const file = f.target.files?.[0];
             if (file) {
               const isRejected = isFileRejected(file);

@@ -1,10 +1,12 @@
 import { useState } from "react";
+import Image from "next/image";
 import { Trash2Icon, XIcon } from "lucide-react";
+
 import Modal from "@/components/Modal";
 import Button from "@/components/Button";
-import Image from "next/image";
-import axios from "axios";
 import Loader from "@/components/Loader";
+
+import axios from "@/lib/axios";
 
 interface IProductCardProps {
   id: string;
@@ -91,7 +93,9 @@ function ProductCard(props: IProductCardProps) {
             Rs. {Number(price)?.toLocaleString()}
           </p>
         </div>
-        <p className="text-neutral-600 text-sm line-clamp-3">{description}</p>
+        <p className="text-neutral-600 text-sm line-clamp-3 min-h-[60px]">
+          {description}
+        </p>
       </div>
       <div className="flex justify-end p-2">
         <Button onClick={() => alert("Not Implemented")}> Add to card</Button>
