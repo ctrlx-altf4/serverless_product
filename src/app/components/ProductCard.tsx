@@ -24,9 +24,7 @@ function ProductCard(props: IProductCardProps) {
   const onDeleteProduct = async (id: string) => {
     setIsDeleting(true);
     try {
-      await axios.delete(
-        `https://leojjvv0zb.execute-api.ap-northeast-2.amazonaws.com/items/${id}`,
-      );
+      await axios.delete(`/items/${id}`);
 
       onDelete();
     } catch (err) {

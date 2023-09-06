@@ -2,12 +2,12 @@
 import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 
-import axios from "axios";
 import { PlusIcon } from "lucide-react";
 
 import Button from "@/components/Button";
 import ProductCard from "@/app/components/ProductCard";
 import ProductSkeleton from "@/app/components/ProductSkeleton";
+import axios from "@/lib/axios";
 
 interface IProductDataType {
   title: string;
@@ -28,9 +28,7 @@ export default function Home() {
     setIsLoading(true);
     setStatus("LOADING");
     try {
-      const _data = await axios.get<IProductDataType[]>(
-        "https://leojjvv0zb.execute-api.ap-northeast-2.amazonaws.com/items",
-      );
+      const _data = await axios.get<IProductDataType[]>("/items");
       setStatus("SUCCESS");
       setData(_data.data);
     } catch (err) {
@@ -93,6 +91,19 @@ export default function Home() {
             />
           );
         })}
+        {status === "FAILED" && (
+          <div className="mt-4 flex flex-col items-center justify-center py-20 w-full bg-red-100 rounded-md">
+            <p>Something went wrong</p>
+          </div>
+        )}
+        {data && data.length < 1 && (
+          <div className="mt-4 flex flex-col items-center justify-center py-20 w-full bg-neutral-100 rounded-md">
+            <p>No products added to display</p>
+            <Link href="add-product">
+              <Button>Add Products</Button>
+            </Link>
+          </div>
+        )}
       </div>
     </>
   );

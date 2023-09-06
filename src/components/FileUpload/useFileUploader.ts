@@ -53,7 +53,7 @@ const useFileUploader = (props: IUseFileUploader) => {
 
     try {
       const url = await axios.put<{ key: string; url: string; type: string }>(
-        "https://leojjvv0zb.execute-api.ap-northeast-2.amazonaws.com/generate-put-url",
+        "/generate-put-url",
         { type: fileType },
       );
 
