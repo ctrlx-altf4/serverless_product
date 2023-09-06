@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+import axios from "@/lib/axios";
 
 export type FileDataType = {
   file: File;
@@ -71,7 +71,6 @@ const useFileUploader = (props: IUseFileUploader) => {
   }
 
   const removeFile = (key: string | number) => {
-    //TODO: Handle this properly
     if (!file) return;
     setFile(null);
     setProgress(null);

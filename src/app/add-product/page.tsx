@@ -3,7 +3,6 @@ import { FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
-import axios from "axios";
 import { ArrowLeftCircle } from "lucide-react";
 
 import FileUpload from "@/components/FileUpload";
@@ -11,6 +10,8 @@ import Button from "@/components/Button";
 import Input from "@/components/Input";
 import Textarea from "@/components/Textarea";
 import Loader from "@/components/Loader";
+
+import axios from "@/lib/axios";
 
 type FieldNames = "description" | "price" | "title";
 export default function Home() {
@@ -41,17 +42,14 @@ export default function Home() {
     };
     setIsSubmitting(true);
     try {
-      await axios.put(
-        "https://leojjvv0zb.execute-api.ap-northeast-2.amazonaws.com/items",
-        data,
-      );
+      await axios.post("/product", data);
       alert("created successfully");
       setTimeout(() => {
         router.back();
       }, 500);
     } catch (err) {
       console.error(err);
-      alert("error here");
+      alert("Something went wrong");
     } finally {
       setIsSubmitting(false);
     }
