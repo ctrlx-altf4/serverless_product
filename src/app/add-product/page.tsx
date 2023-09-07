@@ -80,12 +80,15 @@ export default function Home() {
   const [openModal, setOpenModal] = useState(false);
   return (
     <>
-      <Link href="/">
-        <div className="flex gap-4 items-center my-4 hover:underline">
+      <div>
+        <Link
+          href="/"
+          className="flex gap-4 items-center my-4 hover:underline w-fit"
+        >
           <ArrowLeftCircle />
           Go Back
-        </div>
-      </Link>
+        </Link>
+      </div>
       <h1 className="text-lg font-semibold">Add Product</h1>
 
       <p className="text-sm text-neutral-600">
