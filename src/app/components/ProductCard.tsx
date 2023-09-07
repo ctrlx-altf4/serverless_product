@@ -98,7 +98,7 @@ function ProductCard(props: IProductCardProps) {
         </p>
       </div>
       <div className="flex justify-end p-2">
-        <Button onClick={() => alert("Not Implemented")}> Add to card</Button>
+        <Button onClick={() => alert("Not Implemented")}> Add to cart</Button>
       </div>
     </div>
   );
