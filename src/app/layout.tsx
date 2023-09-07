@@ -1,6 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Poppins, Roboto_Mono } from "next/font/google";
+import Link from "next/link";
 
 const poppins = Poppins({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
@@ -30,13 +31,19 @@ export default function RootLayout({
         <nav className="px-3 fixed w-screen top-0 bg-white z-10 ">
           <div className=" h-full  w-full max-w-xl lg:max-w-4xl xl:max-w-7xl mx-auto  flex items-center ">
             <div className="border-2 border-black  w-full flex  justify-between items-center py-2 my-2  px-4 rounded-md shadow-md">
-              <p>Plerion</p>
+              <Link href="/">
+                <p>Plerion</p>
+              </Link>
               <ul className="flex gap-4  items-center">
                 <li>
-                  <p>Home</p>
+                  <Link href="/">
+                    <p>Home</p>
+                  </Link>
                 </li>
                 <li>
-                  <p>Products</p>
+                  <Link href="/">
+                    <p>Products</p>
+                  </Link>
                 </li>
                 <li>
                   <p>Login</p>

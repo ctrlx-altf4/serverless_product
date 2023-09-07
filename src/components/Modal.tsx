@@ -23,17 +23,11 @@ const Modal = ({ open, onClose, children }: IModalProps) => {
         onClose();
       }}
     >
-      <div
-        className="flex items-center justify-center w-full h-full"
-        onClick={(e) => {
-          // e.
-        }}
-      >
+      <div className="flex items-center justify-center w-full h-full">
         <div
           className="bg-white shadow-md border border-black rounded-md min-w-[400px] min-h-[150px]"
           onClick={(e) => {
             e.stopPropagation();
-            console.log("hit here");
           }}
         >
           {children}
