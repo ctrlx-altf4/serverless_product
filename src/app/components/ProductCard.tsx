@@ -93,7 +93,7 @@ function ProductCard(props: IProductCardProps) {
             Rs. {Number(price)?.toLocaleString()}
           </p>
         </div>
-        <p className="text-neutral-600 text-sm line-clamp-3 min-h-[60px]">
+        <p className="text-neutral-600 text-sm line-clamp-3 min-h-[60px] break-words">
           {description}
         </p>
       </div>
